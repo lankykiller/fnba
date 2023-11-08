@@ -37,19 +37,19 @@ public class webScraping {
         e.printStackTrace();
     }
 
-     /*   try{
+        try{
 
         driver.get(baseUrl);
 
         Thread.sleep(5000);
 
-        System.out.println(driver.getPageSource());
+      //  System.out.println(driver.getPageSource());
 
         driver.quit();
 
     }catch(Exception e){
         e.printStackTrace();
-    }*/
+    }
 
 }
 

@@ -595,3 +595,6 @@ mysql> ALTER TABLE ottelussa
 INSERT INTO player (FirstName, LastName, fantasyPrice, teamID) VALUES ('Test', 'test', '55.5', '14');
 
 INSERT INTO player (FirstName, LastName, fantasyPrice, teamID) VALUES ('Test2', 'test2', '55.5', '14');
+INSERT INTO player (FirstName, LastName, fantasyPrice, teamID) VALUES ('Test2', 'test2', '55.5', '14');
+INSERT INTO player (FirstName, LastName, fantasyPrice, teamID) VALUES ('Test2', 'test2', '55.5', '14');
+INSERT INTO player (FirstName, LastName, fantasyPrice, teamID) VALUES ('Test2', 'test2', '55.5', '14');

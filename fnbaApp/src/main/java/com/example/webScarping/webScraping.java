@@ -26,7 +26,7 @@ public class webScraping {
 
     WebDriverManager.chromedriver().setup();
     WebDriver driver = new ChromeDriver();
-    String baseUrl = "https://tulospalvelu.palloliitto.fi/category/M3!pohjp23/group/1/";
+    String baseUrl = "https://www.espn.com/nba/boxscore/_/gameId/401584689";
     //nba/boxscore/_/gameId/401584689
 
      try{
@@ -37,7 +37,7 @@ public class webScraping {
         e.printStackTrace();
     }
 
-      try{
+     /*   try{
 
         driver.get(baseUrl);
 
@@ -49,7 +49,7 @@ public class webScraping {
 
     }catch(Exception e){
         e.printStackTrace();
-    }
+    }*/
 
 }
 

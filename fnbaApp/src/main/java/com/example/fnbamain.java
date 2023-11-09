@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.example.databasebuilding.buildPlayerData;
+import com.example.webScarping.extractWebData;
 import com.example.webScarping.webScraping;
 
 
@@ -24,9 +25,14 @@ public class fnbamain {
     //    buildPlayerData seconBuildPlayerData = new buildPlayerData();
       // seconBuildPlayerData.buildPlayerInfo("Test2", "test2", 55.5, 14);
       System.setProperty("webdriver.chrome.driver", "C:\\Users\\danim\\Desktop\\fnba\\fnbaApp\\src\\main\\java\\com\\example\\webScarping\\webScraping.java");
+
+      //firstgame of the season id 401584689
+      webScraping webScraping = new webScraping(401584690);
+      //webScraping.scrapeBoxScore();
+
+      extractWebData test1 = new extractWebData("test.txt");
+      test1.readFile();
       
-      webScraping webScraping = new webScraping();
-      webScraping.scrapeBoxScore();
 
     }
 }

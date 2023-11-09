@@ -1,10 +1,8 @@
 package com.example;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 
 import com.example.databasebuilding.buildPlayerData;
 import com.example.webScarping.extractWebData;
@@ -19,7 +17,7 @@ public class fnbamain {
        if not use a exsistig file*/
       
        // newplayerTest.buildPlayerData();
-       // buildPlayerData newPlayerData = new buildPlayerData();
+        buildPlayerData newPlayerData = new buildPlayerData();
       //  newPlayerData.buildPlayerInfo("test.txt");
 
     //    buildPlayerData seconBuildPlayerData = new buildPlayerData();

@@ -18,7 +18,9 @@ public class queue <E> {
     public int size(){
         return count;
     }    
-
+    public boolean isEmpty(){
+        return count == 0;
+    }
     public void enqueue(E element) throws OutOfMemoryError, NullPointerException{
 
         if(element == null){
@@ -27,15 +29,12 @@ public class queue <E> {
     
         if(count == itemArray.length){  
     
-            try{
+
             itemArray = reallocate();
-            }
-            catch(Exception e){
-                throw new OutOfMemoryError("Out of memory");
-            }
+           
         }
         
-        if(tail >= itemArray.length && head > 0){
+        if(tail >= itemArray.length && head >= 0){
             tail = 0;
         }
     

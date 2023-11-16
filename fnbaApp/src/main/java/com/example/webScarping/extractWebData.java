@@ -1,24 +1,19 @@
 package com.example.webScarping;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.example.dataStructures.queue;
 
 public class extractWebData {
-       
-    String triggerWord1 = "starters";
-    int triggerWord1Count = 0;
-    String ignoreWord1 = "bench";
-    String teamNamesDone = "team";
-    String triggerWord2 = "PTS";
-    int triggerWord2Count = 0;
-    String triggerWord3 = "MIN";
-    int triggerword3Count = 0;
+   
+   
     queue<String> teamNamesQueue = new queue<>();
     queue<String> playerStats = new queue<>();
     Object[] array = new Object[40];
-
     int statsCounter = 0;
 
 
@@ -35,57 +30,86 @@ public class extractWebData {
         return filePath.toString();
     }
 
-    public void readFile(){
+    public void readFileGetNames(){
     
-    int addIndex = 0;
-
     try {
         
         Scanner scanner = new Scanner(new File(getFilePath()));  
       
-        //optimoi myohemmin
-        //esim triggerword switch case
         while(scanner.hasNext()){
 
         String word = scanner.next();
-            
-            if(word.equals(teamNamesDone) && triggerWord1Count == 1){
-                    triggerWord1Count--;
-            }
+        
+        if(word.equals("starters")){
+            String word2 = scanner.next();
 
-            if(triggerWord1Count == 1 && word.length() > 2 && !word.equals(ignoreWord1)){
-                    teamNamesQueue.enqueue(word);
+            while(!word2.equals("denotes")){
+                    String playerName = word2;
+                    if(playerName.length() > 3){
+                        if(!playerName.equals("bench") && !playerName.equals("DNP-COACH'S") && !playerName.equals("DECISION")){
+                            if(Character.isLetter(playerName.charAt(0))){
+                                teamNamesQueue.enqueue(playerName);
+                                //System.out.println("\nTAMA MENI LAPI >" + playerName);
+                            }
+                        }
+                    }
+                    if(scanner.hasNext()){
+                        word2 = scanner.next();
+                        }else{
+                            break;
+                            }
+                    if(word2.equals("team")){
+                            break;
+                    }
                 }
-
-             if(word.equals(triggerWord3) && triggerWord2Count > 0){
-                        triggerWord2Count--;  
-                }
-
-            if(triggerWord2Count == 1){
-                playerStats.enqueue(word);
-                statsCounter++;
-            }
-
-            if(statsCounter == 14){
-                array[addIndex] = buildPlayerBoxScore(playerStats, teamNamesQueue);
-                statsCounter = 0;
-                addIndex++;
-            }
-
-            if(word.equals(triggerWord1)){
-                    triggerWord1Count++;
-                }else if(word.equals(triggerWord2)){
-                      triggerWord2Count++;;
-                }
-        }   
-
+            }   
+        }
     } catch (Exception e) {
         e.printStackTrace();
         System.out.println("File not found");
     }
     
-   // System.out.println(teamNamesQueue.toString());
 }
+    public void readFileGetStats() throws FileNotFoundException{
+
+        //pattern for player stats example 30 6-8 4-6 2-2 1 2 3 1 0 1 1 0 -14 18 
+        Pattern playerStatsPattern = Pattern.compile("\\b\\d+-\\d+ \\d+-\\d+ \\d+-\\d+ \\d+-\\d+ \\d+ \\d+ \\d+ \\d+ \\d+ \\d+ \\d+ \\d+ [+-]\\d+ \\d+");
+
+        StringBuilder line = new StringBuilder();
+        Scanner scanner = new Scanner(new File(getFilePath())); 
+        int start = -1;
+        int end = 13;
+        System.out.println("the game file is " + gameFile);
+        while(scanner.hasNext()){
+
+            start++;
+            end++;
+            int first = start;
+
+            while(first < end){
+                if(scanner.hasNext()){
+                    line.append(scanner.next());
+                }
+                first++;
+            }
+            String lineString = line.toString();
+            Matcher playerStatsMatcher = playerStatsPattern.matcher(lineString);
+            if(playerStatsMatcher.find()){
+              /*   String playerStatsString = playerStatsMatcher.group();
+                String[] playerStatsArray = playerStatsString.split(" ");
+                for(int i = 0; i < playerStatsArray.length; i++){
+                    playerStats.enqueue(playerStatsArray[i]);
+                }*/
+                System.out.println("\nFOUND!!!!!!!");
+                }else{
+                    System.out.println("\nNOT MATCH FOUND");
+                }
+             
+            
+            }
+           
+        }
+    
     public playerBoxScore buildPlayerBoxScore(queue<String> playerStats, queue<String> teamNamesQueue){
 
         playerBoxScore playerBoxScore = new playerBoxScore();
@@ -98,7 +122,9 @@ public class extractWebData {
             System.out.println("teamNamesQueue is empty");
             return null;
         }
+        System.out.println(teamNamesQueue.element());
         playerBoxScore.setName(teamNamesQueue.dequeue());
+
         String min = playerStats.dequeue();
         String fg = playerStats.dequeue();
         String treept = playerStats.dequeue();
@@ -112,6 +138,7 @@ public class extractWebData {
         playerBoxScore.setTurnovers(playerStats.dequeue());
         String pf = playerStats.dequeue();
         String plusminus = playerStats.dequeue();
+        System.out.println("the points of the player" + playerStats.element() + "\n");
         playerBoxScore.setPoints(playerStats.dequeue());
 
         return playerBoxScore;

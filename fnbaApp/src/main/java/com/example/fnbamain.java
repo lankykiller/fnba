@@ -1,5 +1,6 @@
 package com.example;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 
@@ -11,7 +12,7 @@ import com.example.webScarping.webScraping;
 
 public class fnbamain {
 
-    public static void main( String[] args ) throws SQLException{
+    public static void main( String[] args ) throws SQLException, FileNotFoundException{
 
        /*file not found make the code that you past as a parameter a file if wanter
        if not use a exsistig file*/
@@ -29,8 +30,8 @@ public class fnbamain {
       //webScraping.scrapeBoxScore();
 
       extractWebData test1 = new extractWebData("401584689.txt");
-      test1.readFile();
-      
+      //test1.readFileGetNames();
+      test1.readFileGetStats();
 
     }
 }

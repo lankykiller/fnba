@@ -28,13 +28,12 @@ public class queue <E> {
         }
     
         if(count == itemArray.length){  
-    
 
             itemArray = reallocate();
            
         }
         
-        if(tail >= itemArray.length && head >= 0){
+        if(tail >= itemArray.length && head > 0){
             tail = 0;
         }
     

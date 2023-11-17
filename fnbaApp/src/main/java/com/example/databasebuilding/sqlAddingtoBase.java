@@ -21,6 +21,7 @@ import java.io.IOException;
         private String lastName;
         private double fantasyPrice;
         private int teamID;
+        private String gameCommand;
 
         sqlAddingtoBase(String teamName, String conference){
 
@@ -35,6 +36,8 @@ import java.io.IOException;
             this.fantasyPrice = fantasyPrice;
             this.teamID = teamID;
         }
+
+        sqlAddingtoBase(){}
 
         public void ConnectionTeam() throws SQLException{
     
@@ -78,6 +81,10 @@ import java.io.IOException;
                     break;
                 case "player":
                     command = insertPlayer();
+                    break;
+                case "InGame":
+                    command = getGameCommand();
+                    break;
                 default:
                     break;
             }
@@ -121,6 +128,42 @@ import java.io.IOException;
                 System.out.println(e.getMessage());
                 e.printStackTrace();    
                 }
+        }
+
+        public void addToInGame(String name, String points, String assists, String rebounds, String steals, String blocks, String turnovers) throws SQLException{
+
+            try{
+            
+                Connection connection = DriverManager.getConnection(JDBC_URL, username, password);
+                connection.setAutoCommit(false);
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(insertInGame(name, points, assists, rebounds, steals, blocks, turnovers));
+                addToCommandHistory("InGame");
+            
+                connection.commit();
+        
+        
+                } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();    
+                }
+        }
+
+        private String insertInGame(String name, String points, String assists, String rebounds, String steals, String blocks, String turnovers) {
+                
+                StringBuilder addQuery = new StringBuilder();
+    
+
+                addQuery.append("INSERT INTO ottelussa (playerID, points, boards, assists, blocks, steals, turnovers) VALUES ('");
+                addQuery.append(name).append("', '").append(points).append("', '").append(rebounds).append("', '").append(assists).append("', '").append(blocks).append("', '").
+                append(steals).append("', '").append(turnovers).append("');");
+                
+                gameCommand = addQuery.toString();
+                return addQuery.toString();
+        }
+
+        public String getGameCommand(){
+            return gameCommand;
         }
         
     }

@@ -2,12 +2,14 @@ package com.example;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
-
-
+import java.util.ArrayList;
 
 import com.example.databasebuilding.buildPlayerData;
+import com.example.databasebuilding.updatingGames;
 import com.example.webScarping.extractWebData;
+import com.example.webScarping.playerBoxScore;
 import com.example.webScarping.webScraping;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 
 public class fnbamain {
@@ -26,13 +28,18 @@ public class fnbamain {
       System.setProperty("webdriver.chrome.driver", "C:\\Users\\danim\\Desktop\\fnba\\fnbaApp\\src\\main\\java\\com\\example\\webScarping\\webScraping.java");
 
       //firstgame of the season id 401584689
-      webScraping webScraping = new webScraping(401584690);
+      webScraping webScraping = new webScraping(401584689);
       //webScraping.scrapeBoxScore();
 
-      extractWebData test1 = new extractWebData("401584690.txt");
+      extractWebData test1 = new extractWebData("401584689.txt");
       test1.readFileGetNames();
       test1.readFileGetStats();
 
+      ArrayList<playerBoxScore> firstBoxScores = test1.getPlayersBoxScore();
+
+      updatingGames test2 = new updatingGames(firstBoxScores); 
+      test2.addBoxScores();
+     
     }
 }
     

@@ -11,10 +11,10 @@ import com.example.dataStructures.queue;
 public class extractWebData {
    
    
-    queue<String> teamNamesQueue = new queue<>();
-    queue<String> playerStats = new queue<>();
-    ArrayList<playerBoxScore> playersBoxScoreArray = new ArrayList<>();
-    int statsCounter = 0;
+    private queue<String> teamNamesQueue = new queue<>();
+    private queue<String> playerStats = new queue<>();
+    public ArrayList<playerBoxScore> playersBoxScoreArray = new ArrayList<>();
+    private int statsCounter = 0;
 
 
     String gameFile;
@@ -24,6 +24,9 @@ public class extractWebData {
         this.gameFile = gamfile;
         filePath.append(gamfile);
     }
+
+    public extractWebData(){}
+
 
     //after word match starters 1 time 
     public String getFilePath(){
@@ -129,7 +132,7 @@ public class extractWebData {
             System.out.println("teamNamesQueue is empty");
             return false;
         }
-        System.out.println(teamNamesQueue.element());
+       // System.out.println(teamNamesQueue.element());
         playerBoxScore.setName(teamNamesQueue.dequeue());
 
         String min = playerStats.dequeue();
@@ -142,14 +145,16 @@ public class extractWebData {
         playerBoxScore.setTurnovers(playerStats.dequeue());
         String pf = playerStats.dequeue();
         String plusminus = playerStats.dequeue();
-        System.out.println("the points of the player" + playerStats.element() + "\n");
+       // System.out.println("the points of the player" + playerStats.element() + "\n");
         playerBoxScore.setPoints(playerStats.dequeue());
 
         playersBoxScoreArray.add(playerBoxScore);
+       // System.out.println(playersBoxScoreArray.get(0).getName());
         return true;
     }
 
     public ArrayList<playerBoxScore> getPlayersBoxScore(){
         return playersBoxScoreArray;
     }
+
 }

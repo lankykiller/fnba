@@ -29,8 +29,8 @@ public class fnbamain {
       webScraping webScraping = new webScraping(401584690);
       //webScraping.scrapeBoxScore();
 
-      extractWebData test1 = new extractWebData("401584689.txt");
-      //test1.readFileGetNames();
+      extractWebData test1 = new extractWebData("401584690.txt");
+      test1.readFileGetNames();
       test1.readFileGetStats();
 
     }

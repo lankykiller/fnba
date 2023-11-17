@@ -149,13 +149,13 @@ import java.io.IOException;
                 }
         }
 
-        private String insertInGame(String name, String points, String assists, String rebounds, String steals, String blocks, String turnovers) {
+        private String insertInGame(String playerID, String points, String assists, String rebounds, String steals, String blocks, String turnovers) {
                 
                 StringBuilder addQuery = new StringBuilder();
     
 
                 addQuery.append("INSERT INTO ottelussa (playerID, points, boards, assists, blocks, steals, turnovers) VALUES ('");
-                addQuery.append(name).append("', '").append(points).append("', '").append(rebounds).append("', '").append(assists).append("', '").append(blocks).append("', '").
+                addQuery.append(playerID).append("', '").append(points).append("', '").append(rebounds).append("', '").append(assists).append("', '").append(blocks).append("', '").
                 append(steals).append("', '").append(turnovers).append("');");
                 
                 gameCommand = addQuery.toString();

@@ -5,11 +5,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.example.databasebuilding.buildPlayerData;
+import com.example.databasebuilding.getDataFromSql;
 import com.example.databasebuilding.updatingGames;
 import com.example.webScarping.extractWebData;
 import com.example.webScarping.playerBoxScore;
 import com.example.webScarping.webScraping;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+
 
 
 public class fnbamain {
@@ -32,13 +33,16 @@ public class fnbamain {
       //webScraping.scrapeBoxScore();
 
       extractWebData test1 = new extractWebData("401584689.txt");
-      test1.readFileGetNames();
-      test1.readFileGetStats();
+     // test1.readFileGetNames();
+     // test1.readFileGetStats();
 
-      ArrayList<playerBoxScore> firstBoxScores = test1.getPlayersBoxScore();
+     // ArrayList<playerBoxScore> firstBoxScores = test1.getPlayersBoxScore();
 
-      updatingGames test2 = new updatingGames(firstBoxScores); 
-      test2.addBoxScores();
+      //updatingGames test2 = new updatingGames(firstBoxScores); 
+      //test2.addBoxScores();
+
+      getDataFromSql test3 = new getDataFromSql("Holiday", "2");
+      test3.getPlayerID();
      
     }
 }

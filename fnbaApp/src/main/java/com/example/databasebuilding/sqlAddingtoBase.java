@@ -132,12 +132,14 @@ import java.io.IOException;
 
         public void addToInGame(String name, String points, String assists, String rebounds, String steals, String blocks, String turnovers) throws SQLException{
 
+            getDataFromSql playerID = new getDataFromSql(name, teamName);
+
             try{
             
                 Connection connection = DriverManager.getConnection(JDBC_URL, username, password);
                 connection.setAutoCommit(false);
                 Statement statement = connection.createStatement();
-                statement.executeUpdate(insertInGame(name, points, assists, rebounds, steals, blocks, turnovers));
+                statement.executeUpdate(insertInGame(playerID.getPlayerID(), points, assists, rebounds, steals, blocks, turnovers));
                 addToCommandHistory("InGame");
             
                 connection.commit();
@@ -149,7 +151,7 @@ import java.io.IOException;
                 }
         }
 
-        private String insertInGame(String playerID, String points, String assists, String rebounds, String steals, String blocks, String turnovers) {
+        private String insertInGame(int playerID, String points, String assists, String rebounds, String steals, String blocks, String turnovers) {
                 
                 StringBuilder addQuery = new StringBuilder();
     

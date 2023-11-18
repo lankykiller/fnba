@@ -11,7 +11,6 @@ import com.example.webScarping.playerBoxScore;
 public class updatingGames {
 
     private ArrayList<playerBoxScore> playerBoxScore;
-    private String playerID;
 
     public updatingGames(ArrayList<playerBoxScore> playerBoxScores){
 
@@ -31,13 +30,5 @@ public class updatingGames {
         }
     }
 
-    public String getPlayerID(){
-        return playerID;
-    }
-
-    public void setPlayerID(String name){
-
-       
-    }
     
 }

@@ -15,6 +15,13 @@ public class buildPlayerData {
 
             public buildPlayerData(){}        
             
+            public buildPlayerData(String fileName){
+                buildPlayerInfo(fileName);
+            }
+
+            public buildPlayerData(String firstname, String lastName, Double fantasyPrice, int teamID){
+                buildPlayerInfo(firstname, lastName, fantasyPrice, teamID);
+            }
 
             public void buildPlayerInfo(String fileName){
             
@@ -44,9 +51,8 @@ public class buildPlayerData {
                     
                     
                     try{
-                    sqlAddingtoBase player = new sqlAddingtoBase(firstName, lastName, fantasyPrice, teamID);
+                    insertPlayer player = new insertPlayer(firstName, lastName, fantasyPrice, teamID);
                     player.ConnectionPlayer();
-                    player.addToCommandHistory("player");
                         }
                         catch (SQLException e){
                         System.out.println("Error connecting to database");
@@ -77,9 +83,8 @@ public class buildPlayerData {
             this.teamID = teamID;
                
               try{
-                    sqlAddingtoBase player = new sqlAddingtoBase(firstName, lastName, fantasyPrice, teamID);
+                    insertPlayer player = new insertPlayer(firstName, lastName, fantasyPrice, teamID);
                     player.ConnectionPlayer();
-                    player.addToCommandHistory("player");
                         }
                         catch (SQLException e){
                         System.out.println("Error connecting to database");

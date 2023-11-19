@@ -27,8 +27,6 @@ public class extractWebData {
 
     public extractWebData(){}
 
-
-    //after word match starters 1 time 
     public String getFilePath(){
         return filePath.toString();
     }
@@ -116,10 +114,8 @@ public class extractWebData {
                 }
             }
 
-
            }
            
-    
     public boolean buildPlayerBoxScore(queue<String> playerStats, queue<String> teamNamesQueue){
 
         playerBoxScore playerBoxScore = new playerBoxScore();

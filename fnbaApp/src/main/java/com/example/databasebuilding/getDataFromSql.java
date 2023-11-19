@@ -7,24 +7,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class getDataFromSql {
+public class getDataFromSql implements sqlAddingtoBase {
 
-    private String JDBC_URL = "jdbc:mysql://localhost:3306/fnba";
-    private String username = "root";
-    private String password = "EkaSql3#!";
+
     private String name;
-    private String teamID;
-    int playerID;
+    private int MAX_SAME_NAME_COUNT = 5;
+    int []playerID = new int[MAX_SAME_NAME_COUNT];
 
     public getDataFromSql(){}
 
-    public getDataFromSql(String name, String teamID){
-            this.teamID = teamID;
+    public getDataFromSql(String name){  
             this.name = name;
     }
 
-
-    public int getPlayerID(){
+    public int[] getPlayerID(){
 
     try {
         Connection connection = DriverManager.getConnection(JDBC_URL, username, password);
@@ -32,10 +28,11 @@ public class getDataFromSql {
         Statement statement = connection.createStatement();
         //statement.execute(getPlayerIDQuery(name));
         ResultSet result = statement.executeQuery(getPlayerIDQuery());
-        
+        int index = 0;
         while (result.next()) {
-            playerID = result.getInt("playerID");
-         //   System.out.println(playerID);
+            playerID[index] = result.getInt("playerID");
+            System.out.println(playerID[index]);
+            index++;
         }
 
         } catch (Exception e) {
@@ -58,11 +55,14 @@ public class getDataFromSql {
 
     getPlayerID.append("SELECT player.playerID FROM player WHERE player.LastName = '");
     getPlayerID.append(editedName);
-    getPlayerID.append("' AND player.teamID =");
-    getPlayerID.append(teamID);
-    getPlayerID.append(";");
+    getPlayerID.append("';");
 
     return getPlayerID.toString();
+    }
+
+    @Override
+    public void addToCommandHistory() {
+        
     }
 
 

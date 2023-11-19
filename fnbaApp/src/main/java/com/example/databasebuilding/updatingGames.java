@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import com.example.webScarping.playerBoxScore;
 
 
-public class updatingGames {
+public class updatingGames{
 
     private ArrayList<playerBoxScore> playerBoxScore;
 
@@ -19,13 +19,13 @@ public class updatingGames {
 
     public void addBoxScores() throws SQLException{
 
-        sqlAddingtoBase newPlayerData = new sqlAddingtoBase();
+      //  sqlAddingtoBase newPlayerData = new sqlAddingtoBase();
         
 
         for(int index = 0; index < playerBoxScore.size() ; index++){
 
             //System.out.println(playerBoxScore.get(index).getName() + playerBoxScore.get(index).getPoints());
-            newPlayerData.addToInGame(playerBoxScore.get(index).getName(), playerBoxScore.get(index).getPoints(), playerBoxScore.get(index).getAssists(), playerBoxScore.get(index).getRebounds(), playerBoxScore.get(index).getSteals(), playerBoxScore.get(index).getBlocks(), playerBoxScore.get(index).getTurnovers());
+     //       newPlayerData.addToInGame(playerBoxScore.get(index).getName(), playerBoxScore.get(index).getPoints(), playerBoxScore.get(index).getAssists(), playerBoxScore.get(index).getRebounds(), playerBoxScore.get(index).getSteals(), playerBoxScore.get(index).getBlocks(), playerBoxScore.get(index).getTurnovers());
 
         }
     }

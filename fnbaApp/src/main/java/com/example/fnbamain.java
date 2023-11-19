@@ -41,8 +41,10 @@ public class fnbamain {
       //updatingGames test2 = new updatingGames(firstBoxScores); 
       //test2.addBoxScores();
 
-      getDataFromSql test3 = new getDataFromSql("Holiday", "2");
+      getDataFromSql test3 = new getDataFromSql("Holiday");
       test3.getPlayerID();
+
+      
      
     }
 }

@@ -10,7 +10,6 @@ import com.example.dataStructures.queue;
 
 public class extractWebData {
    
-   
     private queue<String> teamNamesQueue = new queue<>();
     private queue<String> playerStats = new queue<>();
     public ArrayList<playerBoxScore> playersBoxScoreArray = new ArrayList<>();
@@ -46,7 +45,7 @@ public class extractWebData {
 
             while(!word2.equals("denotes")){
                     String playerName = word2;
-                    if(playerName.length() >= 3){
+                    if(playerName.length() >= 3 && !playerName.equals("Jr.")){
                         if(!playerName.equals("bench") && !playerName.equals("DNP-COACH'S") && !playerName.equals("DECISION")){
                             if(Character.isLetter(playerName.charAt(0))){
                                 teamNamesQueue.enqueue(playerName);

@@ -31,7 +31,7 @@ public class insertInGame implements sqlAddingtoBase{
     
     public void addToInGame() throws SQLException{
 
-        getDataFromSql playerID = new getDataFromSql(lastName);
+        getDataFromPlayer playerID = new getDataFromPlayer(lastName);
         int [] playerIDs = playerID.getPlayerID();
             
             for(int index = 0; index<playerIDs.length; index++){
@@ -53,7 +53,7 @@ public class insertInGame implements sqlAddingtoBase{
     }
 
     public void getPlayerID(){
-        getDataFromSql playerID = new getDataFromSql(lastName);
+        getDataFromPlayer playerID = new getDataFromPlayer(lastName);
         playerIDs = playerID.getPlayerID();
     }
 
@@ -68,7 +68,6 @@ public class insertInGame implements sqlAddingtoBase{
         command = addQuery.toString();
         return addQuery.toString();
     }
-
 
     @Override
     public void addToCommandHistory() {

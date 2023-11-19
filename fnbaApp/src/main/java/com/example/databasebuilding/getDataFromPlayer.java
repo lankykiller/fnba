@@ -4,19 +4,18 @@ package com.example.databasebuilding;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
-public class getDataFromSql implements sqlAddingtoBase {
+public class getDataFromPlayer implements sqlAddingtoBase {
 
 
     private String name;
     private int MAX_SAME_NAME_COUNT = 5;
     int []playerID = new int[MAX_SAME_NAME_COUNT];
 
-    public getDataFromSql(){}
+    public getDataFromPlayer(){}
 
-    public getDataFromSql(String name){  
+    public getDataFromPlayer(String name){  
             this.name = name;
     }
 

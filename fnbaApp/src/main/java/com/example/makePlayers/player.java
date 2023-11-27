@@ -10,6 +10,7 @@ public class player {
     private int totalBlock;
     private int totalSteals;
     private int totalTurnover;
+    private boolean isCaptain = false;
 
     public player(String lastName, String firstName, int totalPoints, int totalAssist, int totalRebound, int totalBlock, int totalSteals, int totalTurnover){
 
@@ -54,6 +55,10 @@ public class player {
 
     public int getTotalTurnover(){
         return totalTurnover;
+    }
+
+    public void setCaptain(){
+        isCaptain = true;
     }
     
     

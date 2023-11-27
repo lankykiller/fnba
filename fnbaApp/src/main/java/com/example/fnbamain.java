@@ -31,8 +31,8 @@ public class fnbamain {
       System.setProperty("webdriver.chrome.driver", "C:\\Users\\danim\\Desktop\\fnba\\fnbaApp\\src\\main\\java\\com\\example\\webScarping\\webScraping.java");
 
       //firstgame of the season id 401584689
-      webScraping webScraping = new webScraping(401584689);
-      //webScraping.scrapeBoxScore();
+      webScraping webScraping = new webScraping(401584690);
+      webScraping.scrapeBoxScore();
 
       extractWebData firstGame = new extractWebData("401584690.txt");
       firstGame.readFileGetNames();
@@ -40,21 +40,20 @@ public class fnbamain {
 
       ArrayList<playerBoxScore> firstBoxScores = firstGame.getPlayersBoxScore();
 
-      //updatingGames test2 = new updatingGames(firstBoxScores); 
-      //test2.addBoxScores();
+      updatingGames test2 = new updatingGames(firstBoxScores); 
+      test2.addBoxScores();
 
       //getDataFromPlayer test3 = new getDataFromPlayer("Holiday");
       //test3.getPlayerID();
 
-      updatingGames test4 = new updatingGames(firstBoxScores);
+     // updatingGames test4 = new updatingGames(firstBoxScores);
       //test4.addBoxScores();
       //lisätty kaksi peliä
 
-      getPlayerStats test5 = new getPlayerStats();
-      test5.getPlayerBoxscores();
-      queue<player> test6 = test5.getPlayerQueue();
-      System.out.println(test6.size());
-
+     // getPlayerStats test5 = new getPlayerStats();
+     // test5.getPlayerBoxscores();
+     // queue<player> test6 = test5.getPlayerQueue();
+ 
     }
 }
     

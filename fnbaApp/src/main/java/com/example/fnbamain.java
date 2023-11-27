@@ -4,10 +4,11 @@ import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.example.dataStructures.queue;
 import com.example.databasebuilding.buildPlayerData;
-import com.example.databasebuilding.getDataFromPlayer;
-import com.example.databasebuilding.getDataFromPlayer;
+import com.example.databasebuilding.getPlayerStats;
 import com.example.databasebuilding.updatingGames;
+import com.example.makePlayers.player;
 import com.example.webScarping.extractWebData;
 import com.example.webScarping.playerBoxScore;
 import com.example.webScarping.webScraping;
@@ -33,7 +34,7 @@ public class fnbamain {
       webScraping webScraping = new webScraping(401584689);
       //webScraping.scrapeBoxScore();
 
-      extractWebData firstGame = new extractWebData("401584689.txt");
+      extractWebData firstGame = new extractWebData("401584690.txt");
       firstGame.readFileGetNames();
       firstGame.readFileGetStats();
 
@@ -47,6 +48,12 @@ public class fnbamain {
 
       updatingGames test4 = new updatingGames(firstBoxScores);
       //test4.addBoxScores();
+      //lisätty kaksi peliä
+
+      getPlayerStats test5 = new getPlayerStats();
+      test5.getPlayerBoxscores();
+      queue<player> test6 = test5.getPlayerQueue();
+      System.out.println(test6.size());
 
     }
 }

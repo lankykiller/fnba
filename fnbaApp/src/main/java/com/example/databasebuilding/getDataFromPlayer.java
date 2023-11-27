@@ -30,7 +30,7 @@ public class getDataFromPlayer implements sqlAddingtoBase {
         int index = 0;
         while (result.next()) {
             playerID[index] = result.getInt("playerID");
-            System.out.println(playerID[index]);
+          //  System.out.println(playerID[index]);
             index++;
         }
 

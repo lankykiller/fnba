@@ -103,7 +103,7 @@ public class extractWebData {
                     }
                     if(statsCounter == 11){
                         if(teamNamesQueue.isEmpty()){
-                            System.out.println("teamNamesQueue is empty");
+                            //System.out.println("teamNamesQueue is empty");
                             return;
                         }
                         buildPlayerBoxScore(playerStats, teamNamesQueue);
@@ -124,7 +124,7 @@ public class extractWebData {
             return false;
         }
          if(teamNamesQueue.isEmpty()){
-            System.out.println("teamNamesQueue is empty");
+          //  System.out.println("teamNamesQueue is empty");
             return false;
         }
        // System.out.println(teamNamesQueue.element());

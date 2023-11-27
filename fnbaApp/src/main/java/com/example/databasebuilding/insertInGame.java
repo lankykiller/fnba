@@ -36,7 +36,9 @@ public class insertInGame implements sqlAddingtoBase{
             
             for(int index = 0; index<playerIDs.length; index++){
                int id = playerIDs[index];
-
+                if(id == 0){
+                    break;
+                }
                 try{
                     Connection connection = DriverManager.getConnection(JDBC_URL, username, password);
                     connection.setAutoCommit(false);

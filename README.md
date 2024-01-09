@@ -8,4 +8,4 @@ In summary you can web scrabe from espn and extract player box scores. After tha
 
 Next step should be making an interface where to select the players and then see the total points. Also to make the possibility to scrape more box scores and to add them to the database.
 
-Used mySQL and Java and Maven was the building tool.
+Used mySQL, Java with Maven.
